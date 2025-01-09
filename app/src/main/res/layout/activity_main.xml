@@ -38,6 +38,7 @@
         app:layout_constraintTop_toTopOf="@id/header_container" />
 
     <EditText
+        android:id="@+id/input_peso"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
@@ -47,9 +48,30 @@
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="parent"
+        android:maxLength="7"
+        android:gravity="center"
+        android:textColorHint="@android:color/holo_blue_dark"
+        app:layout_constraintTop_toBottomOf="@id/header_container" />
 
+
+    <EditText
+        android:id="@+id/input_idade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="20dp"
+        android:hint="@string/label_sua_idade"
+        android:padding="15dp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:maxLength="2"
+        android:gravity="center"
+        android:textColorHint="@android:color/holo_blue_dark"
         app:layout_constraintTop_toBottomOf="@id/header_container" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
