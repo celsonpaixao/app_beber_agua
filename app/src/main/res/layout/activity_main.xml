@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -43,16 +51,16 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
+        android:gravity="center"
         android:hint="@string/label_seu_peso"
+        android:inputType="numberDecimal"
+        android:maxLength="7"
         android:padding="15dp"
         android:textColor="@android:color/holo_blue_dark"
+        android:textColorHint="@android:color/holo_blue_dark"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:inputType="numberDecimal"
         app:layout_constraintStart_toStartOf="parent"
-        android:maxLength="7"
-        android:gravity="center"
-        android:textColorHint="@android:color/holo_blue_dark"
         app:layout_constraintTop_toBottomOf="@id/header_container" />
 
 
@@ -60,18 +68,101 @@
         android:id="@+id/input_idade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="30dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="30dp"
+        android:gravity="center"
         android:hint="@string/label_sua_idade"
+        android:inputType="number"
+        android:maxLength="2"
         android:padding="15dp"
         android:textColor="@android:color/holo_blue_dark"
+        android:textColorHint="@android:color/holo_blue_dark"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        android:maxLength="2"
-        android:gravity="center"
-        android:textColorHint="@android:color/holo_blue_dark"
         app:layout_constraintTop_toBottomOf="@id/header_container" />
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/bt_calcular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:background="@drawable/bg_bluegradient_button"
+        android:padding="15dp"
+        android:text="@string/text_button_calcular"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/input_peso" />
+
+    <View
+        android:id="@+id/constainer_result_ml"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/container_resultado_ml"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_calcular" />
+
+    <TextView
+        android:id="@+id/text_result_ml"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="360,7 ml"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/constainer_result_ml"
+        app:layout_constraintEnd_toEndOf="@id/constainer_result_ml"
+        app:layout_constraintStart_toStartOf="@id/constainer_result_ml"
+        app:layout_constraintTop_toTopOf="@id/constainer_result_ml" />
+
+
+    <Button
+        android:id="@+id/bt_lembrete"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:text="@string/label_lembrete"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@id/bt_alarme"
+        app:layout_constraintStart_toStartOf="@id/bt_calcular"
+        app:layout_constraintTop_toBottomOf="@id/constainer_result_ml"
+
+        />
+
+    <Button
+        android:id="@+id/bt_alarme"
+        android:layout_width="110dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:text="@string/label_alarme"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="@id/bt_calcular"
+        app:layout_constraintStart_toEndOf="@id/bt_lembrete"
+        app:layout_constraintTop_toBottomOf="@id/constainer_result_ml"
+
+        />
+
+    <TextView
+        android:id="@+id/label_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="00:00"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bt_lembrete"
+        android:layout_marginTop="20dp"
+        />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
