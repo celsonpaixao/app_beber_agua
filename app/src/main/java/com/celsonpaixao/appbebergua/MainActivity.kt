@@ -11,6 +11,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -23,8 +24,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var btCalcular: Button
     private lateinit var textResultado: TextView
     private lateinit var btRefresh: ImageView
-
     private lateinit var caluclarModel: CalcularModel
+    private var resultadoML = 0.0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,8 +47,34 @@ class MainActivity : AppCompatActivity() {
             } else {
                 //  editIdade.text.clear()
                 //  editPeso.text.clear()
+                caluclarModel.calculeResultML(
+                    editPeso.text.toString().toDouble(),
+                    editIdade.text.toString().toDouble()
+                )
+                resultadoML = caluclarModel.getResultadoML()
+                textResultado.text = resultadoML.toString() + " " + "ML"
 
             }
+        }
+
+        btRefresh.setOnClickListener{
+
+            val alertDialog = AlertDialog.Builder(this)
+            alertDialog.setTitle(R.string.title_alert_dialog)
+                .setMessage(R.string.description_alert_dialog)
+                .setPositiveButton("OK",{_,i ->
+                    editPeso.text.clear()
+                    editIdade.text.clear()
+                    textResultado.text = "0,0 ML"
+                })
+                .setNegativeButton ("Cancelar", {_, i ->
+
+                })
+                .create()
+
+             alertDialog.show()
+
+
         }
     }
 
